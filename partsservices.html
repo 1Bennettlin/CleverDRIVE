@@ -1,0 +1,165 @@
+<!DOCTYPE html> 
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Services</title>
+	<base href="https://f271.https.cdn.softlayer.net/80F271/dal05.objectstorage.softlayer.net/v1/AUTH_b4a3a2ca-226e-4f3c-aef2-b5275f5900cc/cdn/preview/carrepairshop/">
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="css/style.css" type="text/css">
+	<!--[if lt IE 9]>
+		<link rel="stylesheet" type="text/css" href="css/ie.css">
+	<![endif]-->
+	<link rel="stylesheet" type="text/css" href="https://freewebsitetemplates.com/preview/shared/previews.css">
+	<script src="https://freewebsitetemplates.com/js/jquery/jquery-1.11.0.min.js"></script>		
+	<script src="https://freewebsitetemplates.com/js/xenforo/xenforo.js?_v=77c96446"></script>
+	<script src="https://sdk.amazonaws.com/js/aws-sdk-2.2.18.min.js"></script>
+        <script id="facebook-jssdk" src="https://connect.facebook.net/en_US/all.js"></script>
+	<script>   
+window.fbAsyncInit = function () {
+    FB.init({ appId: appId });
+    document.getElementById('login').onclick = function () {
+        FB.login(function (response) {
+            if (response.authResponse) {
+                AWS.config.credentials = new AWS.WebIdentityCredentials({ //WIF
+                    RoleArn: roleArn,
+                    ProviderId: 'graph.facebook.com',
+                    WebIdentityToken: response.authResponse.accessToken
+                });
+            }
+            else {
+                console.log("Issue logging in");
+            }
+            // Load the FB JS SDK asynchronously
+            (function (d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) { return; }
+                js = d.createElement(s); js.id = id;
+                js.src = "https://connect.facebook.net/en_US/all.js";
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));
+        })
+    }
+}</script>
+</head>
+<body>
+<div id="fb-root"></div>
+		<button id="login">Login</button>
+    <script type="text/javascript">
+        var fbUserId;
+        var params;
+        var keyText;
+        var attText;
+        var valText;
+        var dynamodb = null;
+        var docClient = null;
+        var appId = '339491186384703'; //from facebook
+        var roleArn = 'arn:aws:iam::226612137088:role/bennettsRole'; //from AWS IAM
+        var resultData = null;
+
+window.fbAsyncInit = function () {
+    FB.init({ appId: appId });
+    document.getElementById('login').onclick = function () {
+        FB.login(function (response) {
+            if (response.authResponse) {
+                AWS.config.credentials = new AWS.WebIdentityCredentials({ //WIF
+                    RoleArn: roleArn,
+                    ProviderId: 'graph.facebook.com',
+                    WebIdentityToken: response.authResponse.accessToken
+                });
+            }
+            else {
+                console.log("Issue logging in");
+            }
+            // Load the FB JS SDK asynchronously
+            (function (d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) { return; }
+                js = d.createElement(s); js.id = id;
+                js.src = "https://connect.facebook.net/en_US/all.js";
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));
+        })
+    }
+}</script>
+<div id="header">
+		<div>
+		</div>
+		<div class="navigation">
+			<ul>
+				<li>
+					<a href="https://s3-us-west-2.amazonaws.com/bennetts3demo/CLEVERDRAFT/home.html">home</a>
+				</li>
+				
+				<li class="selected">
+					<a href="https://s3-us-west-2.amazonaws.com/bennetts3demo/CLEVERDRAFT/partsservices.html">services</a>
+				</li>
+				<li>
+					<a href="https://s3-us-west-2.amazonaws.com/bennetts3demo/CLEVERDRAFT/reviewsthisone.html">Reviews</a>
+				</li>
+				
+				<li class="booking">
+					<a href="https://s3-us-west-2.amazonaws.com/initial.311/BookAnAppointment.html">book an appointment</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+<div id="body">
+		<div class="content">
+			<div class="section">
+				
+				<div class="services">
+					<h2>Services Offered</h2><br>
+						<p> We offer a number of services to our customers through teaming up with many mechanics and dealerships of your choosing. The offers displayed below are not 
+						a full list, but a preview of what they offer.
+						</p> 	
+					<ul>
+						<li>
+							<img src="http://www.consumerreports.org/content/dam/cro/news_articles/cars/car_maintenance_check_engine_light.jpg" alt="" style="width:100px !important;height:100px !important;">
+							<style> img {float: right} </style>
+							<div>
+								<h3>
+									Check Engine Light
+								</h3>
+								<p>
+									Check engine light service provides you the trust that we have done a 60 point service check. We check using an OBDII reader what errors your check egnine light is giving, and advise you of the problems that need to be fixed. 
+									You can be have the peace of mind that your car is being fully checked with this service. 
+								</p>
+							</div>
+						</li>
+						<li> 
+							<img src="http://www.allstarcolumbia.com/wp-content/uploads/2014/09/Wheel-Alignment.png" alt="" style="width:100px !important;height:100px !important;">
+								
+						<div>
+							<h3>Wheel Alignment</h3>
+							<p>
+								Our partners provide world class wheel alignment, giving your vehicle the precision that it needs. Keeping your tires from wearing unusually and lasting longer. 
+								It is recommeneded that you have a wheel alignment done every 6 months, over time your alignment drifts off which could lead to unusual wearing of your tires. 
+							</p>
+						</div>
+						</li>
+						<li>
+							<img src="http://www.atggoleta.com/wp-content/uploads/2014/10/Transmission.jpg" alt="" style="width:100px !important;height:100px !important;">
+						<div>
+							<h3>Transmission Services</h3>
+							<p>
+								Changing the fluid in your transmission gaurantees a longer life for your engine. Over time these fluids get depleted and need to be flushed and refilled. Come on in and we can take a look for you. 
+							</p>
+						</div>
+						</li>
+						<li>
+						<img src="http://www.allpro91.com/sites/default/files/styles/corporatex-item/public/services/oillg.jpg?itok=kvZZdnUJ" alt="" style="width:100px !important;height:100px !important;">
+						<div>
+							<h3>Oil Change</h3>
+							<p>
+								Our partners provide a wide range of oil change services, from synthetic oil for those vehciles that have been driven for many years and non synthetic oil for the new vehicles. By changing your oil every 3,000-5,000 miles or every 6 months which ever comes first, will help keep your car
+								engine lubricated and running smoothly as possible. Ensuring a longer life of the vehicle. 
+							</p>
+						</div>
+					</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

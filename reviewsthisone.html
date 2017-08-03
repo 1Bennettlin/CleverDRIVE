@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<base href="https://f271.https.cdn.softlayer.net/80F271/dal05.objectstorage.softlayer.net/v1/AUTH_b4a3a2ca-226e-4f3c-aef2-b5275f5900cc/cdn/preview/carrepairshop/">
+	<meta charset="UTF-8">
+	<title>CleverDrive Blog</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="css/style.css" type="text/css">
+	<!--[if lt IE 9]>
+		<link rel="stylesheet" type="text/css" href="css/ie.css">
+	<![endif]-->
+	<link rel="stylesheet" type="text/css" href="https://freewebsitetemplates.com/preview/shared/previews.css">
+	<script src="https://freewebsitetemplates.com/js/jquery/jquery-1.11.0.min.js"></script>		
+	<script src="https://freewebsitetemplates.com/js/xenforo/xenforo.js?_v=77c96446"></script>
+	<script src="https://sdk.amazonaws.com/js/aws-sdk-2.2.18.min.js"></script>
+	<script id="facebook-jssdk" src="https://connect.facebook.net/en_US/all.js"></script>  
+	<script>   
+window.fbAsyncInit = function () {
+    FB.init({ appId: appId });
+    document.getElementById('login').onclick = function () {
+        FB.login(function (response) {
+            if (response.authResponse) {
+                AWS.config.credentials = new AWS.WebIdentityCredentials({ //WIF
+                    RoleArn: roleArn,
+                    ProviderId: 'graph.facebook.com',
+                    WebIdentityToken: response.authResponse.accessToken
+                });
+            }
+            else {
+                console.log("Issue logging in");
+            }
+            // Load the FB JS SDK asynchronously
+            (function (d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) { return; }
+                js = d.createElement(s); js.id = id;
+                js.src = "https://connect.facebook.net/en_US/all.js";
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));
+        })
+    }
+}</script>
+</head>
+</head>
+<body>
+<div id="fb-root"></div>
+		<button id="login">Login</button>
+		<script type="text/javascript">
+        var fbUserId;
+        var params;
+        var keyText;
+        var attText;
+        var valText;
+        var dynamodb = null;
+        var docClient = null;
+        var appId = '339491186384703'; //from facebook
+        var roleArn = 'arn:aws:iam::226612137088:role/bennettsRole'; //from AWS IAM
+        var resultData = null;
+
+window.fbAsyncInit = function () {
+    FB.init({ appId: appId });
+    document.getElementById('login').onclick = function () {
+        FB.login(function (response) {
+            if (response.authResponse) {
+                AWS.config.credentials = new AWS.WebIdentityCredentials({ //WIF
+                    RoleArn: roleArn,
+                    ProviderId: 'graph.facebook.com',
+                    WebIdentityToken: response.authResponse.accessToken
+                });
+            }
+            else {
+                console.log("Issue logging in");
+            }
+            // Load the FB JS SDK asynchronously
+            (function (d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) { return; }
+                js = d.createElement(s); js.id = id;
+                js.src = "https://connect.facebook.net/en_US/all.js";
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));
+        })
+    }
+}</script>
+<div id="header">
+		<div>
+		</div>
+		<div class="navigation">
+			<ul>
+				<li>
+					<a href="https://s3-us-west-2.amazonaws.com/bennetts3demo/CLEVERDRAFT/home.html">home</a>
+				</li>
+				
+				<li>
+					<a href="https://s3-us-west-2.amazonaws.com/bennetts3demo/CLEVERDRAFT/partsservices.html">services</a>
+				</li>
+				<li class="selected">
+					<a href="blog.html">blog</a>
+				</li>
+				<li class="selected">
+					<a href="https://s3-us-west-2.amazonaws.com/bennetts3demo/CLEVERDRAFT/reviewsthisone.html">Reviews</a>
+				</li>
+				
+				<li class="booking">
+					<a href="https://s3-us-west-2.amazonaws.com/initial.311/BookAnAppointment.html">book an appointment</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+<div id="body">
+		<div class="content">
+			<div class="section">
+				<div class="blog">
+					<ul>
+						<li>
+							<h3>
+								Welcome to the mechanic/dealer reviews! 
+							</h3>
+								<p> 
+									<b><font size="5">True Angels Auto</font></b><br>									
+									True angels is the best auto service ever! They have been very honest and helpful since the beginning. I would give this shop
+									5 stars. Thanks for the help True Angels!.<br><br>
+								</p>
+								<p> 
+									<b><font size="5">Jiffy Lube</font></b>,<br>									
+									Jiffy Lube, is a decent mechanic. They take a bit of a while to return your car. It is decently priced.<br><br>
+								</p>
+								<p> 
+									<b><font size="5">Bund Auto's</font></b>,<br>									
+									Bund Auto's is probably the best service I have ever received from any mechanic. They truly care about their customers. 
+									Great price, great customer service. A BIG 5 STARS!.<br> 
+								</p>
+
+						</li>
+					</ul>	
+					<br>
+					<br>
+						<h4>Leave a review for one of our mechanics/dealers.</h4>
+
+
+<div>
+<p>Name: </p>
+<input id="keyValue" type="text"/><br />
+</div>
+
+<div>
+<p>Mechanic Name: </p>
+<input id="attributeText" type="text" /><br />
+</div>
+
+<div>
+<p>Phone Number: </p>
+<input id="valueText" type="text" /><br />
+</div>
+
+<div>
+<p>Review: </p>
+<textarea id="question" rows="5" cols="40">
+</textarea>
+
+</div>
+<p align="left">
+    <button id="putThis">Submit!</button> 
+</p>
+<div id="results"> </div>
+<div id="result2"> </div>
+
+
+    <script type="text/javascript">
+        var fbUserId;
+        var params;
+        var keyText;
+        var attText;
+        var valText;
+	var questionText;
+        var dynamodb = null;
+        var docClient = null;
+        var appId = '339491186384703'; //from facebook
+        var roleArn = 'arn:aws:iam::226612137088:role/bennettsRole'; //from AWS IAM
+        var resultData = null;
+
+
+document.getElementById('putThis').onclick = function () {
+    dynamodb = new AWS.DynamoDB({ region: 'us-west-2' });
+    docClient = new AWS.DynamoDB.DocumentClient({ service: dynamodb });
+    keyText = document.getElementById("keyValue").value;
+    attText = document.getElementById("attributeText").value;
+    valText = document.getElementById("valueText").value;
+    questionText = document.getElementById("question").value;
+    console.log("Name: ", keyText);
+    console.log("Mechanic Name: ", attText);
+    console.log("PhoneNumber: ", valText);
+    console.log("Review: ", questionText);
+    params = {
+        TableName: 'cleverDrive',
+        Item: {
+            customerName: keyText,
+ 	    Email: attText,
+            PhoneNumber: valText,
+	    Review: questionText
+        }
+    };
+    docClient.put(params, function(err, data){
+        if (err) console.log(err);
+        else
+        {
+            resultData = data;
+            console.log(resultData);
+
+        }
+    })
+	keyText = "";
+	attText = "";
+	valText = "";
+	questionText = ""; 
+	alert("Thank you for submitting your question");
+document.getElementById('keyValue').value = '';
+document.getElementById('attributeText').value = '';
+document.getElementById('valueText').value = '';
+document.getElementById('review').value = '';
+};
+
+
+window.fbAsyncInit = function () {
+    FB.init({ appId: appId });
+
+    document.getElementById('login').onclick = function () {
+
+        FB.login(function (response) {
+            if (response.authResponse) {
+                AWS.config.credentials = new AWS.WebIdentityCredentials({ //WIF
+                    RoleArn: roleArn,
+                    ProviderId: 'graph.facebook.com',
+                    WebIdentityToken: response.authResponse.accessToken
+                });
+            }
+            else {
+                console.log("Issue logging in");
+            }
+
+            // Load the FB JS SDK asynchronously
+            (function (d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) { return; }
+                js = d.createElement(s); js.id = id;
+                js.src = "https://connect.facebook.net/en_US/all.js";
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));
+        })
+    }
+}</script>
+     </div>
+</body>
+</html>

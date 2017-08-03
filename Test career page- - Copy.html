@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<head>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+ <script src="https://sdk.amazonaws.com/js/aws-sdk-2.2.18.min.js"></script>
+    <script id="facebook-jssdk" src="https://connect.facebook.net/en_US/all.js"></script>
+    <meta charset="UTF-8">
+    <title>Contact</title>
+
+</head>
+<body>
+<nav class="navbar navbar-default">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Clever Drive</a>
+          </div>
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li class="active"><a href="#">Home</a></li>
+              <li><a href="#">Product</a></li>
+		<li><a href="#">About</a></li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Contact<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+
+                  <li><a href="#">Social Media</a></li>
+                  <li><a href="#">Submit A Ticket</a></li>
+                  <li><a href="#">FAQ</a></li>
+                  
+                </ul>
+              </li>
+		<li><a href="#">Career</a></li>
+            </ul>
+       
+          </div><!--/.nav-collapse -->
+        </div><!--/.container-fluid -->
+      </nav>
+	
+<button id="login">Login</button>
+
+    <h1>
+Career
+</h1>
+	<div class="container">
+	<div class="jumbotron">
+<h1>
+</h1>
+	
+
+<p>
+Our comprehensive list of open positions provide you with a wide range of career opportunities. Be sure to check on what kinds of jobs are available in broadcasting and what's involved in getting those positions. 
+</p>
+
+
+<h3>
+  Available Jobs:
+</h3>
+
+<p>
+ Information Technology Manager 
+</p>
+
+<p>
+ Accountant 
+</p>
+
+
+<p>
+Sales Assistant
+</p>
+</div>
+
+<div class="jumbotron">
+  <h3>
+Please submit your resume if you are interested to join!
+</h3>
+  <input type="file" id="file-chooser" />
+<p>
+</p>
+        
+        <button id="upload-button" >Upload</button>
+
+        
+        <div id="results"></div>
+        
+        <div id="fb-root"></div>
+        
+        <script type="text/javascript">
+            
+            var appId = '240511703029456';
+            
+            var roleArn = 'arn:aws:iam::788603589498:role/CleverDrive';
+            
+            var bucketName = 'greenmiles';
+            
+            AWS.config.region = 'us-west-2';
+            
+            
+            var fbUserId;
+            
+            var bucket = new AWS.S3({
+                                    
+                                    params: {
+                                    
+                                    Bucket: bucketName
+                                    
+                                    }
+                                    
+                                    });
+                                    
+                                    var fileChooser = document.getElementById('file-chooser');
+                                    
+                                    var button = document.getElementById('upload-button');
+                                    
+                                    var results = document.getElementById('results');
+                                    
+                                    button.addEventListener('click', function () {
+                                                            
+                                                            var file = fileChooser.files[0];
+                                                            
+                                                            if (file) {
+                                                            
+                                                            results.innerHTML = '' ;
+                                                            
+                                                            //Object key will be facebook-USERID#/FILE_NAME
+                                                            
+                                                            var objKey = 'facebook-' + fbUserId + '/' + file.name;
+                                                            
+                                                            var params = {
+                                                            
+                                                            Key: objKey,
+                                                            
+                                                            ContentType: file.type,
+                                                            
+                                                            Body: file,
+                                                            
+                                                            ACL: 'public-read'
+                                                            
+                                                            };
+                                                            
+                                                            bucket.putObject(params, function (err, data) {
+                                                                             
+                                                                             if (err) {
+                                                                             
+                                                                             results.innerHTML = 'ERROR: ' + err;
+                                                                             
+                                                                             } else {
+                                                                             
+                                                                             listObjs();
+                                                                             
+                                                                             }
+                                                                             
+                                                                             });
+                                                            
+                                                            } else {
+                                                            
+                                                            results.innerHTML = 'Nothing to upload.';
+                                                            
+                                                            }
+                                                            
+                                                            }, false);
+                                                            
+                                                            function listObjs() {
+                                                                
+                                                                var prefix = 'facebook-' + fbUserId;
+                                                                
+                                                                bucket.listObjects({
+                                                                                   
+                                                                                   Prefix: prefix
+                                                                                   
+                                                                                   }, function (err, data) {
+                                                                                   
+                                                                                   if (err) {
+                                                                                   
+                                                                                   results.innerHTML = 'ERROR: ' + err;
+                                                                                   
+                                                                                   } else {
+                                                                                   
+                                                                                   var objKeys = "";
+                                                                                   
+                                                                                   data.Contents.forEach(function (obj) {
+                                                                                                         
+                                                                                                         objKeys += obj.Key + "<br>";
+                                                                                                         
+                                                                                                         });
+                                                                                   
+                                                                                   results.innerHTML = objKeys;
+                                                                                   
+                                                                                   }
+                                                                                   
+                                                                                   });
+                                                                                   
+                                                            }
+        
+
+        window.fbAsyncInit = function () {
+            
+            FB.init({
+                    
+                    appId: appId
+                    
+                    });
+                    
+                    document.getElementById('login').onclick = function(){
+				FB.login(function (response) {
+                             
+                             bucket.config.credentials = new AWS.WebIdentityCredentials({
+                                                                                        
+                                                                                        ProviderId: 'graph.facebook.com',
+                                                                                        
+                                                                                        RoleArn: roleArn,
+                                                                                        
+                                                                                        WebIdentityToken: response.authResponse.accessToken
+                                                                                        
+                                                                                        });
+                             
+                             fbUserId = response.authResponse.userID;
+                             
+                             button.style.display = 'block';
+                             
+                             });
+                             
+        };
+        
+        // Load the Facebook SDK asynchronously
+        
+        (function (d, s, id) {
+         
+         var js, fjs = d.getElementsByTagName(s)[0];
+         
+         if (d.getElementById(id)) {
+         
+         return;
+         
+         }
+         
+         js = d.createElement(s);
+         
+         js.id = id;
+         
+         js.src = "//connect.facebook.net/en_US/all.js";
+         
+         fjs.parentNode.insertBefore(js, fjs);
+         
+         }(document, 'script', 'facebook-jssdk'));
+         
+            
+}
+</script>
+</div>
+</div>
+
+</body>
+    
+</html>

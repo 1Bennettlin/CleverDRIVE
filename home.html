@@ -1,0 +1,194 @@
+		<html>
+<head>
+	<base href="https://f271.https.cdn.softlayer.net/80F271/dal05.objectstorage.softlayer.net/v1/AUTH_b4a3a2ca-226e-4f3c-aef2-b5275f5900cc/cdn/preview/carrepairshop/">
+	<meta charset="UTF-8">
+	<title>User Portal - Home</title>
+	<link rel="stylesheet" href="css/style.css" type="text/css">
+	<!--[if lt IE 9]>
+		<link rel="stylesheet" type="text/css" href="css/ie.css">
+	<![endif]-->
+	<link rel="stylesheet" type="text/css" href="https://freewebsitetemplates.com/preview/shared/previews.css">
+	<script src="https://freewebsitetemplates.com/js/jquery/jquery-1.11.0.min.js"></script>		
+	<script src="https://freewebsitetemplates.com/js/xenforo/xenforo.js?_v=77c96446"></script>
+	<script src="https://sdk.amazonaws.com/js/aws-sdk-2.2.18.min.js"></script>
+	<script id="facebook-jssdk" src="https://connect.facebook.net/en_US/all.js"></script>  
+	<script>   
+window.fbAsyncInit = function () {
+    FB.init({ appId: appId });
+    document.getElementById('login').onclick = function () {
+        FB.login(function (response) {
+            if (response.authResponse) {
+                AWS.config.credentials = new AWS.WebIdentityCredentials({ //WIF
+                    RoleArn: roleArn,
+                    ProviderId: 'graph.facebook.com',
+                    WebIdentityToken: response.authResponse.accessToken
+                });
+            }
+            else {
+                console.log("Issue logging in");
+            }
+            // Load the FB JS SDK asynchronously
+            (function (d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) { return; }
+                js = d.createElement(s); js.id = id;
+                js.src = "https://connect.facebook.net/en_US/all.js";
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));
+        })
+    }
+}</script>
+</head>
+<body>
+<div id="header">
+		<div>
+		</div>
+		<div class="navigation">
+			<ul>
+				<li>
+					<a href="https://s3-us-west-2.amazonaws.com/bennetts3demo/CLEVERDRAFT/home.html">Home</a>
+				</li>
+				
+				<li>
+					<a href="https://s3-us-west-2.amazonaws.com/bennetts3demo/CLEVERDRAFT/partsservices.html">Services</a>
+				</li>
+				<li class="selected">
+					<a href="https://s3-us-west-2.amazonaws.com/bennetts3demo/CLEVERDRAFT/reviewsthisone.html">Reviews</a>
+				</li>
+				
+				<li class="booking">
+					<a href="https://s3-us-west-2.amazonaws.com/initial.311/BookAnAppointment.html">Book an Appointment</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+<div id="body">
+		<div class="header">
+			<ul>
+				<li>
+					<a href="" class="figure"><img src="http://184.154.164.202/~wasterem/wp-content/uploads/2013/03/invoice-management.jpg" alt="" style="width:50px !important;height:45px !important;"></a>
+					<div>
+						<h3>Cost Saving Services</h3>
+						<p>
+							Choosing one of our mechanics or dealers helps you save money, by us having these strategic partnerships. 	
+						</p>
+					</div>
+				</li>
+				<li>
+					<a href="" class="figure"><img src="https://226ihl44hn8x1500ks21tzup-wpengine.netdna-ssl.com/wp-content/uploads/2015/11/efficiency-gauge.png" alt="" style="width:50px !important;height:50px !important;"></a>
+					<div>
+						<h3>Efficiency</h3>
+						<p>
+							Servicing with CleverDrives partners, will gaurantee that your vehicle will run smoothly and more efficiently. These trusted mechanics will provide you with reliable and trusthworthy advice to improve driver performance. 
+						</p>
+					</div>
+				</li>
+				<li>
+					<a href="" class="figure"><img src="http://www.dqindia.com/wp-content/uploads/2015/03/partnership.jpg" alt="" style="width:50px !important;height:50px !important;"></a>
+					<div>
+						<h3>Strategic Partnership</h3>
+						<p>
+							We have partnered with my companies in the automotive industry to help make your car as efficient as possible, saving you valuable cash. 
+						</p>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<div class="body">
+			<img src="https://www.enterprise.com/content/enterprise_cros/data/vehicle/bookingCountries/US/CARS/FCAH.doi.768.high.imageSmallThreeQuarterNodePath.png/1444354954396.png" style="width:275px !important;height:275px !important;" alt="">
+			<div>
+				<h1>Clever Drive</h1>
+				<p style="text-align: center;"><font size="5" !important;> Welcome to CleverDrive's user portal! </font></p>
+				<p style="text-align: left;">
+					This portal will allow you to book appointments, contribute to blogs, see the type of services offered by our partnered mechanics and dealers, and upload any important documents we may require. Please feel free to contact us if you have any questions at all. <br>
+					<br>To book an maintenance appointment for your vehicle at a desired location you would like, its required that you login prior. Please click login button below to login into your user account. please click the link below to fill in the "Book an Appointment" form.
+					Any relevant forms that need to be sent to CleverDrive, can be uploaded via this link as well. Please click the link below and click on upload on the upper left hand corner to upload any documents.  
+				</p>
+				<div id="fb-root"></div>
+		<center><button id="login">Login</button></center>
+		<script type="text/javascript">
+        var fbUserId;
+        var params;
+        var keyText;
+        var attText;
+        var valText;
+        var dynamodb = null;
+        var docClient = null;
+        var appId = '339491186384703'; //from facebook
+        var roleArn = 'arn:aws:iam::226612137088:role/bennettsRole'; //from AWS IAM
+        var resultData = null;
+
+window.fbAsyncInit = function () {
+    FB.init({ appId: appId });
+    document.getElementById('login').onclick = function () {
+        FB.login(function (response) {
+            if (response.authResponse) {
+                AWS.config.credentials = new AWS.WebIdentityCredentials({ //WIF
+                    RoleArn: roleArn,
+                    ProviderId: 'graph.facebook.com',
+                    WebIdentityToken: response.authResponse.accessToken
+                });
+            }
+            else {
+                console.log("Issue logging in");
+            }
+            // Load the FB JS SDK asynchronously
+            (function (d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) { return; }
+                js = d.createElement(s); js.id = id;
+                js.src = "https://connect.facebook.net/en_US/all.js";
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));
+        })
+    }
+}</script> <br>
+				<a href="https://s3-us-west-2.amazonaws.com/initial.311/BookAnAppointment.html">Book an Appointment</a>
+			</div>
+		</div>
+		<div class="footer">
+			<div>
+				<h2><span>featured services</span></h2>
+				<ul>
+					<li>
+						<a href="" class="figure"><img src="http://www.consumerreports.org/content/dam/cro/news_articles/cars/car_maintenance_check_engine_light.jpg" alt="" style="width:50px !important;height:50px !important;"></a>
+						<div>
+							<h3>Check Engine Light</h3>
+							<p>
+								Do you have your check engine light on? Come on in, we can take a look at what needs to be fixed and you can be on your way. 
+							</p>
+						</div>
+					</li>
+					<li>
+						<a href="" class="figure"><img src="http://www.allstarcolumbia.com/wp-content/uploads/2014/09/Wheel-Alignment.png" alt="" style="width:50px !important;height:50px !important;"></a>
+						<div>
+							<h3>Wheel Alignment</h3>
+							<p>
+								Our partners provide world class wheel alignment, giving your vehicle the precision that it needs. Keeping your tires from wearing unusually and lasting longer. 
+							</p>
+						</div>
+					</li>
+					<li>
+						<a href="" class="figure"><img src="http://www.atggoleta.com/wp-content/uploads/2014/10/Transmission.jpg" alt="" style="width:50px !important;height:50px !important;"></a>
+						<div>
+							<h3>Transmission Services</h3>
+							<p>
+								Changing the fluid in your transmission gaurantees a longer life for your engine. Over time these fluids get depleted and need to be flushed and refilled. Come on in and we can take a look for you. 
+							</p>
+						</div>
+					</li>
+					<li>
+						<a href="" class="figure"><img src="http://www.allpro91.com/sites/default/files/styles/corporatex-item/public/services/oillg.jpg?itok=kvZZdnUJ" alt="" style="width:50px !important;height:50px !important;"></a>
+						<div>
+							<h3>Oil Change</h3>
+							<p>
+								Our partners provide a wide range of oil change services, from synthetic oil for those vehciles that have been driven for many years and non synthetic oil for the new vehicles. 
+							</p>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</body>
+</html> 

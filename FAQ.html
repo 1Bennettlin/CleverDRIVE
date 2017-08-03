@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<head>
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+ <script src="https://sdk.amazonaws.com/js/aws-sdk-2.2.18.min.js"></script>
+    <script id="facebook-jssdk" src="https://connect.facebook.net/en_US/all.js"></script>
+    <meta charset="UTF-8">
+    <title>FAQ</title>
+</head>
+<body>
+
+<nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Clever Drive</a>
+          </div>
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li class="active"><a href="#">Home</a></li>
+              <li><a href="#">Product</a></li>
+		<li><a href="#">About</a></li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Contact<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+
+                  <li><a href="#">Social Media</a></li>
+                  <li><a href="#">Submit A Ticket</a></li>
+                  <li><a href="#">FAQ</a></li>
+                  
+                </ul>
+              </li>
+		<li><a href="#">Career</a></li>
+            </ul>
+       
+          </div>
+        </div>
+	<button id="login">Login</button>
+    <div id="fb-root"></div>
+	
+<div class="container">
+    <br />
+    <br />
+    <br />
+
+    <div class="alert alert-warning alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+	If you have any questions, you may able to find the answner here!
+    </div>
+
+    <br />
+        <div class="faqHeader">Our Goals</div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFour">Company Goals </a>
+                </h4>
+            </div>
+            <div id="collapseFour" class="panel-collapse collapse">
+                <div class="panel-body">
+                  
+		<li>We want to be the top platform where our users can go to find what exact price they will be paying to travel by car.</li>
+
+		<li>Allow the user to compare the price of driving themselves to the alternative use of transportation (UBER, Taxi, Public transportation)</li>
+
+		<li>Have our calculations used as a standard on all drivers.</li>
+
+		<li>We want to offer a live feed monitoring system for our customers to see their vehicles health</li>
+
+		<li>Ability to choose desired shop based on review and communicate with them with ease</li>
+
+		<li>Charge dealerships and mechanics a commission based on each customer that is refered to them way with our app</li>
+
+		<li>Collect data in the background/ eventually establish good relation with big dealerships.</li>
+
+		<li>Be a big data driven company. </li>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseSeven">Profitability</a>
+                </h4>
+            </div>
+            <div id="collapseSeven" class="panel-collapse collapse">
+                <div class="panel-body">
+                    <li>We care about our consumers so we will never charge them. ( we want to build a large user base)</li>
+
+		<li>Trading our big data with automobile manufactuers.</li>
+
+		<li>Commission based fee for all our participating shops</li>
+                </div>
+            </div>
+        </div>
+
+    <div class="panel-group" id="accordion">
+        <div class="faqHeader">General questions</div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">What is CleverDrive?</a>
+                </h4>
+            </div>
+            <div id="collapseOne" class="panel-collapse collapse">
+                <div class="panel-body">
+		 <li>CleverDRIVE is cost effective and pratical for all drivers.</li>
+		<li>CleverDRIVE does this by providing fuel calculations, strategic partnerships with the auto industry, and vehicle analytics.</li>
+		<li>CleverDRIVE is the technological portal between driver and your wallet.</li>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTen">How can i use CleverDrive?</a>
+                </h4>
+            </div>
+            <div id="collapseTen" class="panel-collapse collapse">
+                <div class="panel-body">
+		After customer connected to the Cleverscanner(ODBII scanner) and open the application on their smartphone, customer will be able to access the data from their vehicle.
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseEleven">What is the mission of CleverDrive?</a>
+                </h4>
+            </div>
+            <div id="collapseEleven" class="panel-collapse collapse">
+                <div class="panel-body">
+               We want CleverDRIVE to become the future of vehicle maintenance and become a worldwide facilitator in automotive big data. 
+                </div>
+            </div>
+        </div>
+
+        <div class="faqHeader">Buyers</div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">Where can i buy CleverScanner?</a>
+                </h4>
+            </div>
+            <div id="collapseTwo" class="panel-collapse collapse">
+                <div class="panel-body">
+                    CleverScanner is sold on Amazon, Ebay, and local walmart store.
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">What is the steps to sign up for a CleverAccount?</a>
+                </h4>
+            </div>
+            <div id="collapseThree" class="panel-collapse collapse">
+                <div class="panel-body">
+              
+                    <ul>
+                        <li>Register an account</li>
+                        <li>Activate your account</li>
+                        <li>Used the information you registered to Login</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFive">How much is CleverScanner?</a>
+                </h4>
+            </div>
+            <div id="collapseFive" class="panel-collapse collapse">
+                <div class="panel-body">
+                    CleverScanner is now on sale for $49.99.
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseSix">How to download CleverDrive application?</a>
+                </h4>
+            </div>
+            <div id="collapseSix" class="panel-collapse collapse">
+                <div class="panel-body">
+		You can type in <strong>CleverDrive</strong> on Play Store or App Store and download the file.                 </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseEight">Do we need to pay for CleverDrive?</a>
+                </h4>
+            </div>
+            <div id="collapseEight" class="panel-collapse collapse">
+                <div class="panel-body">
+                    CleverDrive is a free application.
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .faqHeader {
+        font-size: 27px;
+        margin: 20px;
+    }
+
+    .panel-heading [data-toggle="collapse"]:after {
+        font-family: 'Glyphicons Halflings';
+        content: "e072"; /* "play" icon */
+        float: right;
+        color: #F58723;
+        font-size: 18px;
+        line-height: 22px;
+        /* rotate "play" icon from > (right arrow) to down arrow */
+        -webkit-transform: rotate(-90deg);
+        -moz-transform: rotate(-90deg);
+        -ms-transform: rotate(-90deg);
+        -o-transform: rotate(-90deg);
+        transform: rotate(-90deg);
+    }
+
+    .panel-heading [data-toggle="collapse"].collapsed:after {
+        /* rotate "play" icon from > (right arrow) to ^ (up arrow) */
+        -webkit-transform: rotate(90deg);
+        -moz-transform: rotate(90deg);
+        -ms-transform: rotate(90deg);
+        -o-transform: rotate(90deg);
+        transform: rotate(90deg);
+        color: #454444;
+    }
+</style>
+</body>
+</html>
