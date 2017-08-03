@@ -2,7 +2,7 @@
 
 Start-up company focused on developing a raspberry pi / bluetooth device that plugs into a vehicle's ODBII port. Allows syncing of efficiency, mpg, maintenance, and other vehicle health data to mobile application.
 
--Bootstrap 3 framework
+-Bootstrap 3 framework /n
 -HTML5, CSS3, JavaScript, JQuery, Ajax
 -AWS - S3 (storage) , DynamoDB (database), IAM (securities)
 -Facebook SDK - Facebook login for personalized "customers" page
